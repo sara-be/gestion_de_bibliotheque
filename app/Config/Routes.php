@@ -25,8 +25,18 @@ $routes->group('admin',static function($routes){
     $routes->get('categories/create', 'CategoryController::create', ['as' => 'categories.create']);
     $routes->post('categories/store', 'CategoryController::store', ['as' => 'categories.store']);
 
+    $routes->get('books/delete/(:num)', 'BookController::delete/$1', ['as' => 'books.delete']);
+
+    $routes->get('books/edit/(:num)', 'BookController::edit/$1', ['as' => 'books.edit']); // Formulaire d'édition
+    $routes->post('books/update/(:num)', 'BookController::update/$1', ['as' => 'books.update']); // Mise à jour du livre
+    
+    $routes->get('books/show/(:num)', 'BookController::show/$1', ['as' => 'books.show']);
+   
 
 
+    $routes->get('books/addUserForm/(:num)', 'BookController::addUserForm/$1', ['as' => 'books.addUserForm']);
+    $routes->post('books/addUser', 'BookController::addUser', ['as' => 'books.addUser']);
+    
 
     });
     

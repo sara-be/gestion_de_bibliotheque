@@ -9,7 +9,7 @@
                 <span class="icon">
                     <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
                 </span>
-                <span class="title">Bookl</span>
+                <span class="title">Bookly</span>
             </a>
         </li>
         <li class="nav-item">
@@ -29,38 +29,6 @@
             </a>
         </li>
 
-        <li class="nav-item">
-            <a class="nav-link" href="#">
-                <span class="icon">
-                    <ion-icon name="shield-checkmark-outline"></ion-icon>
-                </span>
-                <span class="title">Experts</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">
-                <span class="icon">
-                    <ion-icon name="star-outline"></ion-icon>
-                </span>
-                <span class="title">Rating</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#"> <!-- Ajout des classes "nav-item" et "nav-link" -->
-                <span class="icon">
-                    <ion-icon name="videocam-outline"></ion-icon>
-                </span>
-                <span class="title">Meeting</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">
-                <span class="icon">
-                    <ion-icon name="time-outline"></ion-icon>
-                </span>
-                <span class="title">Historique</span>
-            </a>
-        </li>
         <li class="nav-item">
         <a class="nav-link" href="<?= route_to('admin.logout') ?>">
     <span class="icon">

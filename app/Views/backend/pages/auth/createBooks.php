@@ -42,6 +42,13 @@
                                     </div>
                                 </div>
 
+                                <div class="form-row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="nombre_livre">Nombre d'exemplaires</label>
+                                        <input type="number" class="form-control" id="nombre_livre" name="nombre_livre" required min="1" value="1">
+                                    </div>
+                                </div>
+
                                 <div class="form-group">
                                     <label for="description">Description</label>
                                     <textarea class="form-control" id="description" name="description" rows="2"></textarea>
@@ -63,7 +70,6 @@
         </div>
     </div>
 </div>
-
 
 <script>
     $(document).ready(function() {

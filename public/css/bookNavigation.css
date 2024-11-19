@@ -13,8 +13,8 @@
 
     /*========== Colors ==========*/
     /*Color mode HSL(hue, saturation, lightness)*/
-    --first-color: #83d86e;
-    --second-color:#abe64c;
+    --first-color:#683585;
+    --second-color:#F9DEC9;
     --text-color: hsl(203, 8%, 98%);
     --text-color-light: hsl(203, 8%, 80%);
     --body-color: hsl(259, 20%, 18%);
@@ -619,7 +619,7 @@ body {
             box-shadow: 0 8px 48px hsla(203, 71%, 25%, .5);
         }
         .card-body {
-          text-align: right; /* Aligner les éléments à droite */
+  /* Aligner les éléments à droite */
       }
       /* category*/
       .category-form {
@@ -680,3 +680,199 @@ body {
         background-color: #6f42c1; /* Couleur violette */
         color: white;
     }
+
+
+
+
+
+
+
+
+
+
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap');
+
+
+/*cards*/
+.product_wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+
+  padding: 20px;
+}
+
+.product_item {
+  width: 200px;
+  background-color: var(--white);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  text-align: center;
+}
+
+.product_one img {
+  max-width: 100%;    /* Limite la largeur de l'image à celle de son conteneur */
+    height: auto;       /* Conserve les proportions de l'image */
+    max-height: 180px;  /* Ajuste la hauteur maximale */
+    object-fit: cover;
+}
+
+.product_two {
+  padding: 15px;
+}
+
+
+
+
+
+
+
+
+/*cards*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+button:focus, input:focus, textarea:focus {
+	outline: 0;
+}
+
+
+
+.product_one {
+	position: relative;
+	overflow: hidden;
+}
+
+
+.product_one a {
+    padding: 10px 25px;
+    display: inline-flex;
+    align-items: center;
+    border-radius: 30px;
+    background: #735CFC;
+    font-size: 14px;
+    font-weight: 500;
+    color: #ffffff;
+    text-decoration: none;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    z-index: 999;
+    width: 145px;
+    transform: translate(-50%, -50%);
+    transition: .3s;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.product_item:hover .product_one a {
+	top: 50%;
+	visibility: visible;
+	opacity: 1;
+}
+
+.product_one a i {
+	margin-right: 5px;
+}
+
+.product_item:hover .product_one img {
+	transform: scale(1.5);
+}
+
+
+
+.product_two .star_icon i {
+	font-size: 17px;
+	color: #FAB311;
+	padding-right: 2px;
+}
+
+.product_two h3 {
+	font-size: 18px;
+	font-weight: 700;
+	color: #000000;
+	margin-top: 15px;
+}
+
+.custom_flex {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding-top: 10px;
+}
+
+.custom_flex p {
+	font-size: 15px;
+	color: red;
+}
+
+.custom_flex p span {
+    color: rgb(0 0 0 / 47%);
+    margin-left: 10px;
+    text-decoration: line-through;
+}
+
+.custom_flex a {
+    width: 35px;
+    height: 35px;
+    border: 1px solid rgb(0 0 0 / 27%);
+    border-radius: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-left: 10px;
+    text-decoration: none;
+    font-size: 15px;
+    color: rgb(0 0 0 / 27%);
+    transition: .3s;
+}
+
+.product_item:hover .custom_flex a {
+	border: 1px solid #735CFC;
+}
+
+/*button*/
+/* Réduire la taille des boutons */
+.btn-small {
+  padding: 5px 10px;  /* Réduit le padding des boutons */
+  font-size: 14px;     /* Ajuste la taille du texte */
+  border-radius: 5px;  /* Bordure arrondie */
+}
+
+/* Espacement entre les boutons */
+.btn-small + .btn-small {
+  margin-left: 10px;   /* Ajoute un espace de 10px entre les boutons */
+}
+
+/* Ajouter un effet hover */
+.btn-small:hover {
+  background-color: #f0f0f0; /* Changer la couleur de fond au survol */
+}
+/*button*/
+.search-container {
+  flex-grow: 1;
+}
+
+.search-container input {
+  width: 95%;
+  padding: 6px;
+}
+
+.search-icon {
+  font-size: 18px;
+  color: #888;
+}
+
+
