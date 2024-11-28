@@ -1,11 +1,16 @@
 <?php
 
+namespace App\Controllers\Home;
+
 use CodeIgniter\Router\RouteCollection;
 
 /**
  * @var RouteCollection $routes
  */
 $routes->get('/', 'Home::index');
+// $routes->group('/', function ($routes) {
+//     $routes->get('', 'Home::index');
+// });
 
 
 $routes->group('admin',static function($routes){
@@ -52,3 +57,21 @@ $routes->group('admin',static function($routes){
 
 
 
+
+// Routes utilisateur
+// $routes->get('utilisateur/dashboard', 'UtilisateurController::index');
+$routes->group('utilisateur', function($routes){
+    $routes->get('acceuil','UtilisateurController::acceuil');
+    $routes->get('inscription','UtilisateurController::inscription');
+    $routes->get('connexion','UtilisateurController::connexion');
+    $routes->get('profile','UtilisateurController::profile');
+    $routes->get('livresEmpruntes','UtilisateurController::livresEmpruntes');
+    $routes->get('livresEnAttente','UtilisateurController::showPendingBooks');
+});
+
+
+    // $routes->get('utilisateur/acceuil', 'UtilisateurController::acceuil');
+    // $routes->get('utilisateur/inscription', 'UtilisateurController::inscription');
+    // $routes->get('utilisateur/connexion', 'UtilisateurController::connexion');
+    // $routes->get('utilisateur/profile', 'UtilisateurController::profile');
+    // $routes->get('utilisateur/livresEmpruntes', 'UtilisateurController::livresEmpruntes');

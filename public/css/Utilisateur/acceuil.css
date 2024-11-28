@@ -1,0 +1,14 @@
+.search-bar-container {
+    margin: 1rem 0;
+    text-align: center;
+}
+
+#search-bar {
+    width: 200%;
+    height: 80%;
+    margin: 0 auto;
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-family: 'Poppins', sans-serif;
+}
