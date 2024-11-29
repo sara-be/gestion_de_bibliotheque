@@ -23,9 +23,17 @@
         <li class="nav-item">
             <a class="nav-link" href="<?= route_to('books.index') ?>">
                 <span class="icon">
-                    <ion-icon name="people-outline"></ion-icon>
+                <ion-icon name="book-outline"></ion-icon>
                 </span>
                 <span class="title">Books</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="<?= route_to('books.retard') ?>">
+                <span class="icon">
+                    <ion-icon name="people-outline"></ion-icon>
+                </span>
+                <span class="title">Emprunteurs</span>
             </a>
         </li>
 

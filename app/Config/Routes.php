@@ -8,10 +8,23 @@ use CodeIgniter\Router\RouteCollection;
 $routes->get('/', 'Home::index');
 
 
+$routes->get('dashboard', 'UserController::dashboard');  // Route pour afficher le tableau de bord
+$routes->post('register', 'UserController::register');    // Route pour traiter l'inscription de l'utilisateur
+$routes->post('logout', 'UserController::logout');  // Route pour la déconnexion
+
+$routes->get('login', 'UserController::login'); // Affiche le formulaire de connexion
+$routes->post('authenticate', 'UserController::authenticate'); // Soumet le formulaire de connexion
+
+
+
+
+
+
+
+
 $routes->group('admin',static function($routes){
     $routes->group('',[], static function($routes){
      
-    
           // Routes du tableau de bord et déconnexion
     $routes->get('dashboard', 'AdminController::index', ['as' => 'admin.dashboard']);
     $routes->get('admin/logout', 'AdminController::logout', ['as' => 'admin.logout']);
@@ -27,6 +40,7 @@ $routes->group('admin',static function($routes){
 
     $routes->get('books/delete/(:num)', 'BookController::delete/$1', ['as' => 'books.delete']);
 
+    
     $routes->get('books/edit/(:num)', 'BookController::edit/$1', ['as' => 'books.edit']); // Formulaire d'édition
     $routes->post('books/update/(:num)', 'BookController::update/$1', ['as' => 'books.update']); // Mise à jour du livre
     
@@ -36,7 +50,12 @@ $routes->group('admin',static function($routes){
 
     $routes->get('books/addUserForm/(:num)', 'BookController::addUserForm/$1', ['as' => 'books.addUserForm']);
     $routes->post('books/addUser', 'BookController::addUser', ['as' => 'books.addUser']);
-    
+
+    $routes->post('books/removeUser', 'BookController::removeUser', ['as' => 'books.removeUser']);
+
+    $routes->get('books/retard', 'BookController::retard', ['as' => 'books.retard']);
+
+
 
     });
     

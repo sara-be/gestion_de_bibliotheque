@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="/css/navigation.css">
+<link rel="stylesheet" href="/css/dashNavigation.css">
 
 
 <div class="navi">
@@ -24,7 +24,6 @@
             <a class="nav-link" href="<?= route_to('books.index') ?>">
                 <span class="icon">
                 <ion-icon name="book-outline"></ion-icon>
-                    
                 </span>
                 <span class="title">Books</span>
             </a>
@@ -50,5 +49,5 @@
     </ul>
 </div>
 
-<script src="/js/navigation.js"></script>
+<script src="/js/dashNavigation.js"></script>
 

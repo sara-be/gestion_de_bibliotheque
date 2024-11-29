@@ -15,14 +15,13 @@
     <link href="https://cdn.jsdelivr.net/npm/ionicons@5.0.0/dist/ionicons/ionicons.css" rel="stylesheet">
 
     <!-- Inclure les fichiers CSS personnalisés -->
-    <link rel="stylesheet" href="/css/bookNavigation.css">
+    <link rel="stylesheet" href="/css/dashNavigation.css">
    
-
 </head>
 <body>
     <!-- Navigation -->
     <?= view('layouts/dashHeader'); ?>
-    <?= view('layouts/navigation'); ?>
+    <?= view('layouts/dashNavigation'); ?>
 
     <!-- Contenu Principal -->
     <div class="main">
@@ -32,22 +31,23 @@
         </div>
     </div>
 
+   
 
     <!-- Chargement de jQuery avant Bootstrap JS pour la compatibilité -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <!-- Ajouter les fichiers JS de Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- Charger SweetAlert2 pour les alertes -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
 
     <!-- Charger ton script JavaScript personnalisé -->
-    <script src="/js/navigation.js"></script>
+    <script src="/js/dashNavigation.js"></script>
     <?php if (session()->getFlashdata('success')): ?>
     <script>
         Swal.fire({
@@ -67,6 +67,8 @@
         });
     </script>
 <?php endif; ?>
+
+
 
 <script>
     $(document).ready(function() {
@@ -116,51 +118,5 @@
         <?php endif; ?>
     });
 </script>
-<script>
-    document.querySelectorAll('.deleteBtn').forEach(function(button) {
-        button.addEventListener('click', function(e) {
-            e.preventDefault(); // Empêche l'action par défaut
-
-            // Afficher l'alerte SweetAlert2 de confirmation
-            Swal.fire({
-                title: 'Êtes-vous sûr ?',
-                text: "Cette action ne peut pas être annulée.",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonText: 'Oui, annuler l\'emprunt!',
-                cancelButtonText: 'Non, garder l\'emprunt',
-                reverseButtons: true
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    // Si l'utilisateur confirme, rediriger vers la route
-                    window.location.href = this.href;
-                }
-            });
-        });
-    });
-</script>
-
-<script>
-    function confirmDelete(userId) {
-        Swal.fire({
-            title: 'Êtes-vous sûr ?',
-            text: "Vous ne pourrez pas annuler cette action !",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Oui, supprimer',
-            cancelButtonText: 'Annuler'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                // Soumettre le formulaire spécifique
-                document.getElementById('deleteForm-' + userId).submit();
-            }
-        });
-    }
-</script>
-
-
-
 </body>
 </html>

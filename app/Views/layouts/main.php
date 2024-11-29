@@ -8,6 +8,7 @@
     <!-- Ajout du CSS de Bootstrap -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.0/dist/sweetalert2.min.css">
     <!-- Ajouter Font Awesome pour les icônes (si tu utilises des icônes FontAwesome en plus de Ionicons) -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
@@ -19,6 +20,7 @@
 </head>
 <body>
     <!-- Navigation -->
+    <?= view('layouts/dashHeader'); ?>
     <?= view('layouts/navigation'); ?>
 
     <!-- Contenu Principal -->
@@ -29,23 +31,7 @@
         </div>
     </div>
 
-    <?php if (session()->getFlashdata('success') || session()->getFlashdata('error')): ?>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            // Initialisation de tous les toasts
-            var toastElements = [].slice.call(document.querySelectorAll('.toast'));
-            var toastList = toastElements.map(function (toastEl) {
-                return new bootstrap.Toast(toastEl, {
-                    animation: true,
-                    delay: 5000 // Toast disparait après 5 secondes
-                });
-            });
-            toastList.forEach(function (toast) {
-                toast.show(); // Affiche chaque toast
-            });
-        });
-    </script>
-    <?php endif; ?>
+   
 
     <!-- Ajout de jQuery (version complète pour éviter les conflits) -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -53,10 +39,81 @@
     <!-- Ajouter les fichiers JS de Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Charger SweetAlert2 pour les alertes -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<!-- Ajoutez ce code dans la section <head> de votre vue `editBook.php` -->
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.0/dist/sweetalert2.min.js"></script>
+
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
 
     <!-- Script personnalisé pour ta navigation -->
-    <script src="/js/navigation.js"></script>
+    <?php if (session()->getFlashdata('success')): ?>
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Succès',
+            text: 'Livre mis à jour avec succès!',
+            confirmButtonText: 'OK'
+        });
+    </script>
+<?php elseif (session()->getFlashdata('error')): ?>
+    <script>
+        Swal.fire({
+            icon: 'error',
+            title: 'Erreur',
+            text: 'Une erreur s\'est produite. Veuillez réessayer.',
+            confirmButtonText: 'OK'
+        });
+    </script>
+<?php endif; ?>
+<script>
+    $(document).ready(function() {
+        // Vérifier s'il y a un message de succès
+        <?php if (session()->getFlashdata('success')): ?>
+            Swal.fire({
+                icon: 'success',
+                title: 'Succès',
+                text: '<?= session()->getFlashdata('success'); ?>',
+                confirmButtonText: 'OK'
+            });
+        <?php endif; ?>
+
+        // Vérifier s'il y a un message d'erreur
+        <?php if (session()->getFlashdata('error')): ?>
+            Swal.fire({
+                icon: 'error',
+                title: 'Erreur',
+                text: '<?= session()->getFlashdata('error'); ?>',
+                confirmButtonText: 'OK'
+            });
+        <?php endif; ?>
+    });
+</script>
+
+<script>
+    // Affichage de SweetAlert2 en cas de succès ou d'erreur
+    $(document).ready(function() {
+        // Vérifier si un message de succès existe dans la session
+        <?php if (session()->getFlashdata('success')): ?>
+            Swal.fire({
+                title: 'Succès!',
+                text: '<?= session()->getFlashdata('success'); ?>',
+                icon: 'success',
+                confirmButtonText: 'Ok'
+            });
+        <?php endif; ?>
+
+        // Vérifier si un message d'erreur existe dans la session
+        <?php if (session()->getFlashdata('error')): ?>
+            Swal.fire({
+                title: 'Erreur!',
+                text: '<?= session()->getFlashdata('error'); ?>',
+                icon: 'error',
+                confirmButtonText: 'Ok'
+            });
+        <?php endif; ?>
+    });
+</script>
 </body>
 </html>

@@ -24,6 +24,8 @@
     gap: 1.5rem;
 
 }
+
+
 </style>
 
  
@@ -73,10 +75,10 @@
 <!-- Formulaire de connexion -->
 <div class="login-form-container active" id="login-form">
     <div id="close-login-btn" class="fas fa-times"></div>
-    <form action="#" method="post">
+    <form action="<?= site_url('authenticate') ?>" method="post">
 
         <h3>sign in</h3>
-        <span>username</span>
+        <span>Email</span>
         <!-- Ajout de name="email" -->
         <input type="email" name="email" class="box" placeholder="enter your email" id="floatingEmailInput" inputmode="email" autocomplete="email" required>
        
@@ -86,9 +88,9 @@
       
 
 
-        <button type="submit" class="btn"><?= lang('Auth.login') ?></button>
+        <button type="submit" class="btn">S'authentifier</button>
 
-        <p>forgot password? <a href="#">click here</a></p>
+        <p>forgot password? <a href="#" id="forgot-password-link">click here</a></p>
         <p>don't have an account? <a href="#" id="show-register">create one</a></p>
     </form>
 </div>
@@ -96,15 +98,19 @@
 <!-- Formulaire d'inscription -->
 <div class="register-form-container" id="register-form">
     <div id="close-register-btn" class="fas fa-times"></div>
-    <form action="#" method="post">
+    <form action="<?= site_url('register') ?>" method="post">
         <h3>sign up</h3>
 
-        <span>email</span>
-        <input type="email" class="box" placeholder="enter your email" id="floatingEmailInput" name="email" inputmode="email" autocomplete="email" required>
-       
+        <span>name</span>
+        <input type="text" class="box" placeholder="enter your username" id="floatingNameInput" name="nname" inputmode="text" autocomplete="nname" required>
+     
         <span>username</span>
         <input type="text" class="box" placeholder="enter your username" id="floatingUsernameInput" name="username" inputmode="text" autocomplete="username" required>
      
+        <span>email</span>
+        <input type="email" class="box" placeholder="enter your email" id="floatingEmailInput" name="email" inputmode="email" autocomplete="email" required>
+       
+       
         <span>password</span>
         <input type="password" class="box" placeholder="enter your password" id="floatingPasswordInput" name="password" inputmode="text" autocomplete="new-password" required>
        

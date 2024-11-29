@@ -4,7 +4,14 @@
 
 <h1>Ajouter un utilisateur</h1>
 
-<form action="<?= route_to('books.addUser') ?>" method="POST">
+<div class="row justify-content-center">
+    <div class="col-md-9 mb-30">
+        <div class="card card-statistics h-100">
+            <div class="card-body">
+                <div class="col-xl-12 mb-30">
+                    <div class="card card-statistics h-100">
+                        <div class="card-body">
+                        <form action="<?= route_to('books.addUser') ?>" method="POST">
     <?= csrf_field() ?> <!-- Protection CSRF -->
     
     <!-- Champ pour l'ID du livre (caché) -->
@@ -34,7 +41,14 @@
         <input type="password" name="password" id="password" class="form-control" placeholder="Entrez le mot de passe" required>
     </div>
 
-    <button type="submit" class="btn btn-primary">Ajouter l'utilisateur</button>
+    <button type="submit" class="home__button">Ajouter l'utilisateur</button>
 </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <?= $this->endSection(); ?>

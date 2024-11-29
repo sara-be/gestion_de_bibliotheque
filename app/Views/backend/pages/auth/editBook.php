@@ -4,8 +4,7 @@
 
 <h1>Ajouter un livre</h1>
 <br>
-<!-- Card contenant le formulaire -->
-<!-- Vérifier s'il y a un message de succès -->
+
 
 <div class="row justify-content-center">
     <div class="col-md-9 mb-30">
@@ -75,30 +74,6 @@
         </div>
     </div>
 </div>
-<?php if (session()->getFlashdata('success')): ?>
-    <script>
-        Swal.fire({
-            icon: 'success',
-            title: 'Succès!',
-            text: '<?= session()->getFlashdata('success'); ?>',
-            showConfirmButton: false,
-            timer: 3000 // L'alerte disparaît après 3 secondes
-        }).then(() => {
-            // Redirige vers la liste des livres après la fermeture de l'alerte
-            window.location.href = "<?= base_url('books.index'); ?>";
-        });
-    </script>
-<?php endif; ?>
 
-<?php if (session()->getFlashdata('error')): ?>
-    <script>
-        Swal.fire({
-            icon: 'error',
-            title: 'Erreur!',
-            text: '<?= session()->getFlashdata('error'); ?>',
-            showConfirmButton: true // L'utilisateur doit confirmer pour fermer
-        });
-    </script>
-<?php endif; ?>
 
 <?= $this->endSection(); ?>

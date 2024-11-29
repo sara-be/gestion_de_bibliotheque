@@ -31,8 +31,8 @@
 
                     <br><br><br><br>
 
-                    <h1>Liste des Utilisateurs</h1>
-
+                    <h1>Liste des emprunteurs</h1>
+                    <br><br>
                     <!-- Recherche et bouton dans une nouvelle ligne -->
                     <div class="row mb-3">
                         <div class="col-md-8 d-flex">
@@ -43,7 +43,7 @@
                         </div>
                         <div class="col-md-4 d-flex justify-content-end">
                             <!-- Bouton aligné à droite -->
-                            <a href="<?= route_to('books.addUserForm', $book['id']); ?>" class="btn btn-success">Ajouter un utilisateur</a>
+                            <a href="<?= route_to('books.addUserForm', $book['id']); ?>" class="home__button">Ajouter un utilisateur</a>
                         </div>
                     </div>
 
@@ -57,6 +57,7 @@
                                 <th>Email</th>
                                 <th>Date de début</th>
                                 <th>Date de fin</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -69,6 +70,19 @@
                                         <td><?= esc($user['email']); ?></td>
                                         <td><?= esc($user['debut_emprunt']); ?></td>
                                         <td><?= esc($user['fin_emprunt']); ?></td>
+                                        <td>
+    <form id="deleteForm-<?= esc($user['id']); ?>" method="POST" action="<?= route_to('books.removeUser'); ?>" style="display: none;">
+        <?= csrf_field(); ?>
+        <input type="hidden" name="user_id" value="<?= esc($user['id']); ?>">
+        <input type="hidden" name="book_id" value="<?= esc($book['id']); ?>">
+    </form>
+    <button type="button" class="btn btn-danger" title="Supprimer" onclick="confirmDelete('<?= esc($user['id']); ?>')">
+        <i class="fas fa-trash-alt"></i>
+    </button>
+</td>
+
+
+
                                     </tr>
                                 <?php endforeach; ?>
                             <?php else: ?>

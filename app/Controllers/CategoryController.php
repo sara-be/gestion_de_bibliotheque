@@ -29,11 +29,14 @@ class CategoryController extends BaseController
     
             // Redirection avec message de succès
             return redirect()->to(route_to('books.index'))->with('success', 'Catégorie ajoutée avec succès.');
+       
         } catch (\Exception $e) {
             // En cas d'exception, logguer l'erreur
             log_message('error', 'Erreur dans store() : ' . $e->getMessage());
             return redirect()->back()->with('error', 'Une erreur est survenue.');
+
         }
     }
+    
     
 }
