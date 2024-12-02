@@ -19,19 +19,20 @@
 <body>
 <header class="header">
         <div class="header-1">
-            <a href="#" class="logo"><i class="fas fa-book"></i>bookly</a>
-
+            <a href="/utilisateur/acceuil" class="logo"><i class="fas fa-book"></i>bookly</a>
             <div class="search-bar-container">
                 <input id="search-bar" type="text" class="form-control" placeholder="Rechercher un livre..."
                     aria-label="Search" />
             </div>
 
             <div class="icons">
-                <div id="home-btn" class="fas fa-home" title="Accueil"></div>
-                <a href="/utilisateur/livresEmpruntes" class="fas fa-book" title="Livres empruntés" style="text-decoration: none;"></a>
-                <div id="pending-books-btn" class="fas fa-hourglass-half" title="Livres en cours d'acceptation"></div>
+                <a href="/utilisateur/acceuil" id="home-btn" class="fas fa-home" title="Accueil"></a>
+                <a href="/utilisateur/livresEmpruntes" class="fas fa-book" title="Livres empruntés"
+                    style="text-decoration: none;"></a>
+                <a href="/utilisateur/livresEnAttente" class="fas fa-hourglass-half"
+                    title="Livres en cours d'acceptation"></a>
                 <div id="search-btn" class="fas fa-search"></div>
-                <div id="login-btn" class="fas fa-user"></div>
+                <a href="/utilisateur/profile" id="login-btn" class="fas fa-user"></a>
             </div>
         </div>
 

@@ -27,12 +27,12 @@
             </div>
 
             <div class="icons">
-                <div id="home-btn" class="fas fa-home" title="Accueil"></div>
+                <a href="/utilisateur/acceuil" id="home-btn" class="fas fa-home" title="Accueil"></a>
                 <a href="/utilisateur/livresEmpruntes" class="fas fa-book" title="Livres empruntés"
                     style="text-decoration: none;"></a>
-                <div id="pending-books-btn" class="fas fa-hourglass-half" title="Livres en cours d'acceptation"></div>
+                <a href="/utilisateur/livresEnAttente" class="fas fa-hourglass-half" title="Livres en cours d'acceptation"></a>
                 <div id="search-btn" class="fas fa-search"></div>
-                <div id="login-btn" class="fas fa-user"></div>
+                <a href="/utilisateur/profile" id="login-btn" class="fas fa-user"></a>
             </div>
         </div>
 
