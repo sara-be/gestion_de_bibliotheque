@@ -88,9 +88,11 @@ class UtilisateurController extends BaseController
     }
 
     //profile
-    public function profile()
+    public function profile($userId = 4)
     {
-        return view('Utilisateur/profile');
+        $utilisateurModel = new UtilisateurModel();
+        $utilisateur = $utilisateurModel->find($userId);
+        return view('Utilisateur/profile',['utilisateur' => $utilisateur] );
     }
 
     public function addPendingBook($userId, $bookId)
@@ -109,20 +111,32 @@ class UtilisateurController extends BaseController
         return redirect()->back()->with('success', 'Livre ajouté à la liste des livres en attente.');
     }
 
-    public function showPendingBooks($userId= 4){
-    $utilisateurModel = new UtilisateurModel();
-    // Récupérer l'utilisateur
-    $utilisateur = $utilisateurModel->find($userId);
-    if (!$utilisateur) {
-        return redirect()->to('/erreur')->with('error', 'Utilisateur introuvable.');
+    public function showPendingBooks($userId = 4)
+    {
+        $utilisateurModel = new UtilisateurModel();
+        $bookModel = new BookModel();
+    
+        // Récupérer l'utilisateur
+        $utilisateur = $utilisateurModel->find($userId);
+        if (!$utilisateur) {
+            return redirect()->to('/erreur')->with('error', 'Utilisateur introuvable.');
+        }
+    
+        // Récupérer les livres en attente
+        $livresEnAttenteIds = !empty($utilisateur['livres_en_attente']) ? explode(',', $utilisateur['livres_en_attente']) : [];
+        $livresEnAttente = [];
+    
+        // Récupérer les détails des livres en attente
+        if (!empty($livresEnAttenteIds)) {
+            $livresEnAttente = $bookModel->whereIn('id', $livresEnAttenteIds)->findAll();
+        }
+    
+        // Charger une vue pour afficher les livres en attente
+        return view('Utilisateur/livresEnAttente', [
+            'livresEnAttente' => $livresEnAttente
+        ]);
     }
-    // Récupérer les livres en attente
-    $livresEnAttente = !empty($utilisateur['livres_en_attente']) ? explode(',', $utilisateur['livres_en_attente']) : [];
-    // Charger une vue pour afficher les livres en attente
-    return view('Utilisateur/livresEnAttente', [
-        'livresEnAttente' => $livresEnAttente
-    ]);
-}
+    
 
 public function emprunterLivre($livreId=21)
 {

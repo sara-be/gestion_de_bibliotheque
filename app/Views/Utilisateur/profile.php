@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
         integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="/css/login.css">
     <link rel="stylesheet" href="/css/Utilisateur/acceuil.css">
@@ -33,21 +32,42 @@
                     style="text-decoration: none;"></a>
                 <a href="/utilisateur/livresEnAttente" class="fas fa-hourglass-half"
                     title="Livres en cours d'acceptation"></a>
-                <div id="search-btn" class="fas fa-search"></div>
                 <a href="/utilisateur/profile" id="login-btn" class="fas fa-user"></a>
             </div>
         </div>
 
         <div class="header-2">
-
             <h1 class="text-center mb-4 p-3"
                 style="color: white; font-family: 'Poppins', sans-serif; font-size: 2.5rem;">
                 Profile
             </h1>
-
-            </nav>
         </div>
+    </header>
 
+    <div class="container mt-5">
+        <!-- Affichage du profil utilisateur -->
+        <?php if ($utilisateur): ?>
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Détails du Profil</h5>
+                    <div class="mb-3">
+                        <p><strong>Nom :</strong> <?= esc($utilisateur['name']) ?></p>
+                        <p><strong>Nom d'utilisateur :</strong> <?= esc($utilisateur['username']) ?></p>
+                        <p><strong>Email :</strong> <?= esc($utilisateur['email']) ?></p>
+                        <p><strong>Date d'emprunt du livre :</strong> <?= esc($utilisateur['debut_emprunt']) ?></p>
+                        <p><strong>Date de retour prévue :</strong> <?= esc($utilisateur['fin_emprunt']) ?></p>
+                    </div>
+                    <a href="/utilisateur/acceuil" class="btn btn-primary">Retour à l'accueil</a>
+                </div>
+            </div>
+        <?php else: ?>
+            <div class="alert alert-warning text-center">
+                Aucune information trouvée pour cet utilisateur.
+            </div>
+        <?php endif; ?>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

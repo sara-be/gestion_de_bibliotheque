@@ -11,13 +11,32 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="/css/login.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/Utilisateur/acceuil.css">
     <title>Livres empruntés</title>
+    <style>
+        .card-img-top {
+            width: 100%;
+            height: auto;
+            object-fit: contain; /* Affiche toute l'image sans la couper */
+            max-height: 300px; /* Limite la hauteur si nécessaire */
+        }
+
+        .card {
+            height: 100%; /* Assure que la carte s'étend selon le contenu */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* Organise le contenu verticalement */
+        }
+
+        .card-body {
+            flex-grow: 1; /* Permet au contenu textuel de s'adapter */
+        }
+    </style>
 </head>
 
 <body>
-<header class="header">
+
+    <header class="header">
         <div class="header-1">
             <a href="/utilisateur/acceuil" class="logo"><i class="fas fa-book"></i>bookly</a>
             <div class="search-bar-container">
@@ -31,38 +50,38 @@
                     style="text-decoration: none;"></a>
                 <a href="/utilisateur/livresEnAttente" class="fas fa-hourglass-half"
                     title="Livres en cours d'acceptation"></a>
-                <div id="search-btn" class="fas fa-search"></div>
                 <a href="/utilisateur/profile" id="login-btn" class="fas fa-user"></a>
             </div>
         </div>
 
         <div class="header-2">
-
             <h1 class="text-center mb-4 p-3"
                 style="color: white; font-family: 'Poppins', sans-serif; font-size: 2.5rem;">
-                Livres Empruntés
+                Livres empruntés
             </h1>
-
-            </nav>
         </div>
     </header>
+
     <div class="container mt-5">
-        
-    <?php if ($utilisateur && $livre): ?>
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Utilisateur : <?= esc($utilisateur['name']) ?></h5>
-                    <p><strong>Nom d'utilisateur :</strong> <?= esc($utilisateur['username']) ?></p>
-                    <p><strong>Email :</strong> <?= esc($utilisateur['email']) ?></p>
 
-                    <hr>
-
-                    <h5 class="card-title">Détails du livre :</h5>
-                    <p><strong>Titre :</strong> <?= esc($livre['title']) ?></p>
-                    <p><strong>Auteur :</strong> <?= esc($livre['author']) ?></p>
-                    <p><strong>Catégorie :</strong> <?= esc($livre['categorie_id']) ?></p>
-                    <p><strong>Date d'emprunt :</strong> <?= esc($utilisateur['debut_emprunt']) ?></p>
-                    <p><strong>Date de retour prévue :</strong> <?= esc($utilisateur['fin_emprunt']) ?></p>
+        <?php if ($utilisateur && $livre): ?>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card shadow-sm">
+                        <?php if (!empty($livre['photo'])): ?>
+                            <img src="http://localhost:8080/uploads/<?= esc($livre['photo']) ?>" class="card-img-top" alt="<?= esc($livre['title']) ?>">
+                        <?php else: ?>
+                            <img src="https://via.placeholder.com/300x200?text=Pas+de+photo" class="card-img-top" alt="Pas de photo">
+                        <?php endif; ?>
+                        <div class="card-body">
+                            <h5 class="card-title">Détails du livre :</h5>
+                            <p><strong>Titre :</strong> <?= esc($livre['title']) ?></p>
+                            <p><strong>Auteur :</strong> <?= esc($livre['author']) ?></p>
+                            <p><strong>Catégorie :</strong> <?= esc($livre['categorie_id']) ?></p>
+                            <p><strong>Date d'emprunt :</strong> <?= esc($utilisateur['debut_emprunt']) ?></p>
+                            <p><strong>Date de retour prévue :</strong> <?= esc($utilisateur['fin_emprunt']) ?></p>
+                        </div>
+                    </div>
                 </div>
             </div>
         <?php else: ?>

@@ -49,18 +49,32 @@
         </div>
     </header>
     <div class="container mt-5">
+    <?php if (!empty($livresEnAttente)): ?>
+        <ul class="list-group">
+            <?php foreach ($livresEnAttente as $livre): ?>
+                <li class="list-group-item">
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <h5><?= esc($livre['title']) ?></h5>
+                            <p><strong>Auteur:</strong> <?= esc($livre['author']) ?></p>
+                            <p><strong>Année:</strong> <?= esc($livre['year']) ?></p>
+                            <p><strong>Description:</strong> <?= esc($livre['description']) ?></p>
+                        </div>
+                        <div>
+                            <!-- Vous pouvez ajouter une image du livre si disponible -->
+                            <?php if (!empty($livre['photo'])): ?>
+                                <img src="http://localhost:8080/uploads/<?= esc($livre['photo']) ?>" alt="<?= esc($livre['title']) ?>" class="img-fluid" width="100">
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    <?php else: ?>
+        <p class="text-center text-muted">Aucun livre en attente.</p>
+    <?php endif; ?>
+</div>
 
-
-        <?php if (!empty($livresEnAttente)): ?>
-            <ul class="list-group">
-                <?php foreach ($livresEnAttente as $livreId): ?>
-                    <li class="list-group-item">Livre ID : <?= esc($livreId) ?></li>
-                <?php endforeach; ?>
-            </ul>
-        <?php else: ?>
-            <p class="text-center text-muted">Aucun livre en attente.</p>
-        <?php endif; ?>
-    </div>
 </body>
 
 </html>
