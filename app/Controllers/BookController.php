@@ -35,56 +35,56 @@ class BookController extends BaseController
     }
    
     public function addUser()
-{
-    $userModel = new UserModel();
-    $bookModel = new BookModel();
-
-    // Récupérer les données du formulaire
-    $data = [
-        'name' => $this->request->getPost('name'),
-        'username' => $this->request->getPost('username'),
-        'email' => $this->request->getPost('email'),
-        'password' => password_hash($this->request->getPost('password'), PASSWORD_BCRYPT),
-        'livre_id' => $this->request->getPost('book_id'),
-    ];
-
-    // Vérification si le nom d'utilisateur existe déjà
-    if ($userModel->where('username', $data['username'])->first()) {
-        return redirect()->back()->with('error', 'Le nom d\'utilisateur existe déjà.');
-    }
-
-    // Calculer la date de début (date actuelle)
-    $startDate = date('Y-m-d'); // Date actuelle
-    // Calculer la date de fin (10 jours après la date actuelle)
-    $endDate = date('Y-m-d', strtotime('+10 days')); // 10 jours après
-
-    // Ajouter les dates de début et de fin aux données de l'utilisateur
-    $data['start_date'] = $startDate;
-    $data['end_date'] = $endDate;
-
-    // Récupérer l'ID du livre
-    $bookId = $data['livre_id'];
-
-    // Récupérer les informations du livre pour décrémenter les copies restantes
-    $book = $bookModel->find($bookId);
-    if ($book && $book['remaining_copies'] > 0) {
-        // Décrémenter le nombre de copies restantes
-        $bookModel->update($bookId, [
-            'remaining_copies' => $book['remaining_copies'] - 1
-        ]);
-
-        // Insérer l'utilisateur dans la base de données
-        if ($userModel->insert($data)) {
-            return redirect()->to(route_to('books.show', $bookId))
-                ->with('success', 'Utilisateur ajouté avec succès!');
-        } else {
-            return redirect()->back()->with('error', 'Erreur lors de l\'ajout de l\'utilisateur.');
+    {
+        $userModel = new UserModel();
+        $bookModel = new BookModel();
+    
+        // Récupérer les données du formulaire
+        $data = [
+            'name' => $this->request->getPost('name'),
+            'username' => $this->request->getPost('username'),
+            'email' => $this->request->getPost('email'),
+            'password' => password_hash($this->request->getPost('password'), PASSWORD_BCRYPT),
+            'livre_id' => $this->request->getPost('book_id'),
+        ];
+    
+        // Vérification si le nom d'utilisateur existe déjà
+        if ($userModel->where('username', $data['username'])->first()) {
+            return redirect()->back()->with('error', 'Le nom d\'utilisateur existe déjà.');
         }
-    } else {
-        return redirect()->back()->with('error', 'Aucune copie disponible pour ce livre.');
+    
+        // Calculer la date de début (date actuelle)
+        $startDate = date('Y-m-d'); // Date actuelle
+        // Calculer la date de fin (10 jours après la date actuelle)
+        $endDate = date('Y-m-d', strtotime('+10 days')); // 10 jours après
+    
+        // Ajouter les dates de début et de fin aux données de l'utilisateur
+        $data['debut_emprunt'] = $startDate;  // Utiliser 'debut_emprunt' au lieu de 'start_date'
+        $data['fin_emprunt'] = $endDate;      // Utiliser 'fin_emprunt' au lieu de 'end_date'
+    
+        // Récupérer l'ID du livre
+        $bookId = $data['livre_id'];
+    
+        // Récupérer les informations du livre pour décrémenter les copies restantes
+        $book = $bookModel->find($bookId);
+        if ($book && $book['remaining_copies'] > 0) {
+            // Décrémenter le nombre de copies restantes
+            $bookModel->update($bookId, [
+                'remaining_copies' => $book['remaining_copies'] - 1
+            ]);
+    
+            // Insérer l'utilisateur dans la base de données
+            if ($userModel->insert($data)) {
+                return redirect()->to(route_to('books.show', $bookId))
+                    ->with('success', 'Utilisateur ajouté avec succès!');
+            } else {
+                return redirect()->back()->with('error', 'Erreur lors de l\'ajout de l\'utilisateur.');
+            }
+        } else {
+            return redirect()->back()->with('error', 'Aucune copie disponible pour ce livre.');
+        }
     }
-}
-
+    
 
     
 
@@ -289,6 +289,7 @@ public function retard()
         'lateUsers' => $usersWithLateReturns
     ]);
 }
+
 
 
 }

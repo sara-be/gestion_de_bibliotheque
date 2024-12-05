@@ -2,7 +2,11 @@
 namespace App\Controllers;
 
 use App\Models\UserModel;
+use App\Models\BookModel;
+use App\Models\EmpruntEnCoursModel;
 use CodeIgniter\Controller;
+
+
 
 class UserController extends BaseController
 {
@@ -51,7 +55,14 @@ class UserController extends BaseController
     // Optionnel: Méthode pour afficher le tableau de bord
     public function dashboard()
     {
-        return view('dashboard');  // Charge la vue du tableau de bord
+        // Charger le modèle BookModel pour récupérer les livres
+        $bookModel = new BookModel();
+
+        // Récupérer les livres, vous pouvez ajuster la requête en fonction de vos besoins
+        $books = $bookModel->findAll();
+
+        // Passer les livres à la vue du tableau de bord
+        return view('dashboard', ['books' => $books]);
     }
     public function logout()
     {
@@ -91,6 +102,109 @@ class UserController extends BaseController
         // Rediriger vers le tableau de bord (par exemple)
         return redirect()->to('/dashboard');
     }
+
+    public function details($id)
+    {
+        $bookModel = new BookModel();
+        $book = $bookModel->find($id); // Récupérer les détails du livre par ID
+
+        if (!$book) {
+            throw new \CodeIgniter\Exceptions\PageNotFoundException("Livre non trouvé");
+        }
+
+        // Passer les détails du livre à la vue
+        return view('details', ['book' => $book]);
+    }
+
+    public function borrowBook($bookId)
+    {
+        // Récupérer l'ID de l'utilisateur depuis la session
+        $session = session();
+        $userId = $session->get('user_id');  // ID de l'utilisateur connecté
+    
+        if (!$userId) {
+            // Si l'utilisateur n'est pas connecté, renvoyer une erreur
+            return $this->response->setJSON(['error' => 'Vous devez être connecté pour emprunter un livre.']);
+        }
+    
+        // Récupérer les détails du livre
+        $bookModel = new BookModel();
+        $book = $bookModel->find($bookId);
+    
+        if (!$book) {
+            // Si le livre n'existe pas, renvoyer une erreur
+            return $this->response->setJSON(['error' => 'Livre non trouvé.']);
+        }
+    
+        // Vérifier si une demande d'emprunt est déjà en cours
+        $empruntEnCoursModel = new EmpruntEnCoursModel();
+        $existingBorrow = $empruntEnCoursModel->where('user_id', $userId)
+                                             ->where('book_id', $bookId)
+                                             ->where('status', 'pending')
+                                             ->first();
+    
+        if ($existingBorrow) {
+            // Si une demande est déjà en cours, renvoyer une réponse d'erreur
+            return $this->response->setJSON(['error' => 'Vous avez déjà une demande en cours pour ce livre.']);
+        }
+    
+        // Ajouter la demande d'emprunt
+        $data = [
+            'user_id' => $userId,
+            'book_id' => $bookId,
+            'status'  => 'pending',  // Demande en attente
+        ];
+    
+        if ($empruntEnCoursModel->save($data)) {
+            // Si la demande est enregistrée avec succès
+            return $this->response->setJSON(['success' => 'Demande d\'emprunt envoyée avec succès.']);
+        } else {
+            // Si une erreur se produit
+            return $this->response->setJSON(['error' => 'Une erreur est survenue, veuillez réessayer.']);
+        }
+    }
+    
+    
+
+    public function updateBorrowStatus($id, $status)
+    {
+        // Validation du statut avant mise à jour
+        if (!in_array($status, ['accepted', 'rejected'])) {
+            return redirect()->to('/admin/emprunts')->with('error', 'Statut invalide.');
+        }
+
+        $empruntEnCoursModel = new EmpruntEnCoursModel();
+
+        // Mettre à jour le statut de la demande d'emprunt
+        $data = ['status' => $status];
+
+        if ($empruntEnCoursModel->update($id, $data)) {
+            return redirect()->to('/admin/emprunts')->with('message', 'Statut mis à jour avec succès.');
+        } else {
+            return redirect()->to('/admin/emprunts')->with('error', 'Erreur lors de la mise à jour du statut.');
+        }
+    }
+
+    public function enAttente()
+    {
+        $session = session();
+        $userId = $session->get('user_id'); // ID de l'utilisateur connecté
+    
+        // Récupérer les emprunts en attente avec les informations du livre
+        $empruntEnCoursModel = new EmpruntEnCoursModel();
+        $empruntsEnAttente = $empruntEnCoursModel
+            ->select('emprunt_en_cours.*, livres.photo, livres.title, livres.author') // Utilisation correcte des noms de tables
+            ->join('livres', 'livres.id = emprunt_en_cours.book_id') // Jointure avec la table livres
+            ->where('emprunt_en_cours.user_id', $userId)
+            ->where('emprunt_en_cours.status', 'pending')
+            ->findAll();
+    
+        // Passer les emprunts et les livres associés à la vue
+        return view('en_attente', ['borrowedBooks' => $empruntsEnAttente]);
+    }
+    
+    
+    
 }
 
 ?>

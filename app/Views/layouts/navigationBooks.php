@@ -37,6 +37,15 @@
                 <span class="title">Emprunteurs</span>
             </a>
         </li>
+        <li class="nav-item">
+    <a class="nav-link" href="<?= route_to('demandes.index') ?>">
+        <span class="icon">
+            <ion-icon name="document-text-outline"></ion-icon>
+        </span>
+        <span class="title">Demandes</span>
+    </a>
+</li>
+
 
         <li class="nav-item">
         <a class="nav-link" href="<?= route_to('admin.logout') ?>">

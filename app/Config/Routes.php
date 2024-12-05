@@ -16,9 +16,16 @@ $routes->get('login', 'UserController::login'); // Affiche le formulaire de conn
 $routes->post('authenticate', 'UserController::authenticate'); // Soumet le formulaire de connexion
 
 
+$routes->get('book/details/(:num)', 'UserController::details/$1', ['as' => 'book.details']);
+$routes->get('book/borrow/(:num)', 'UserController::borrowBook/$1');
 
+$routes->get('user/en_attente', 'UserController::enAttente');
 
+$routes->post('demandes/accepter/(:num)', 'DemandesController::accepter/$1');
+$routes->get('demandes', 'DemandesController::index', ['as' => 'demandes.index']);
+$routes->post('demandes/refuser/(:num)', 'DemandesController::refuser/$1');
 
+$routes->get('accepter', 'AccepterController::index', ['as' => 'accepter']);
 
 
 
@@ -54,6 +61,12 @@ $routes->group('admin',static function($routes){
     $routes->post('books/removeUser', 'BookController::removeUser', ['as' => 'books.removeUser']);
 
     $routes->get('books/retard', 'BookController::retard', ['as' => 'books.retard']);
+
+  
+
+ 
+ 
+
 
 
 
