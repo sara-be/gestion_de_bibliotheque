@@ -138,25 +138,46 @@ class UtilisateurController extends BaseController
     }
     
 
-public function emprunterLivre($livreId=21)
-{
-    if ($this->request->isAJAX()) {
+    
+
+    public function emprunterLivre()
+    {
+        $livreId = $this->request->getPost('livre_id');
+        if (!$livreId) {
+            return redirect()->back()->with('error', 'Aucun livre sélectionné.');
+        }
+    
         $utilisateurModel = new UtilisateurModel();
-        // ID de l'utilisateur connecté (remplace par l'ID réel)
-        $userId = session()->get('user_id'); 
-        // Récupérer l'utilisateur
-        $utilisateur = $utilisateurModel->find($userId);
-        if (!$utilisateur) {
-            return $this->response->setJSON(['success' => false, 'message' => 'Utilisateur introuvable.']);}
-        // Ajouter le livre à la liste des livres en attente
-        $livresEnAttente = !empty($utilisateur['livres_en_attente']) 
-            ? explode(',', $utilisateur['livres_en_attente']) 
-            : [];
-        if (!in_array($livreId, $livresEnAttente)) {
-            $livresEnAttente[] = $livreId;
-            $utilisateurModel->update($userId, ['livres_en_attente' => implode(',', $livresEnAttente)]);}
-        return $this->response->setJSON(['success' => true]);
+        $bookModel = new BookModel();
+
+        // $userId = session()->get('user_id');
+    
+        // if (!$userId) {
+        //     return redirect()->to('/login')->with('error', 'Veuillez vous connecter pour emprunter un livre.');
+        // }
+    
+        $utilisateur = $utilisateurModel->find($userId=4);
+        $livre = $bookModel->find($livreId);
+    
+        if (!$utilisateur || !$livre) {
+            return redirect()->back()->with('error', 'Utilisateur ou livre introuvable.');
+        }
+    
+        if ($livre['remaining_copies'] <= 0) {
+            return redirect()->back()->with('error', 'Ce livre n\'est plus disponible.');
+        }
+    
+        $livresEnAttente = !empty($utilisateur['livres_en_attente']) ? explode(',', $utilisateur['livres_en_attente']) : [];
+        if (in_array($livreId, $livresEnAttente)) {
+            return redirect()->back()->with('warning', 'Ce livre est déjà dans votre liste d\'attente.');
+        }
+    
+        $livresEnAttente[] = $livreId;
+        $utilisateurModel->update($userId, ['livres_en_attente' => implode(',', $livresEnAttente)]);
+        $bookModel->update($livreId, ['remaining_copies' => $livre['remaining_copies'] - 1]);
+    
+        return redirect()->back()->with('success', 'Livre ajouté à la liste des livres en attente.');
     }
-    return redirect()->to('/');
-}
+    
+    
 }

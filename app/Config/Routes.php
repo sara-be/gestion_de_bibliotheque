@@ -67,6 +67,8 @@ $routes->group('utilisateur', function($routes){
     $routes->get('profile','UtilisateurController::profile');
     $routes->get('livresEmpruntes','UtilisateurController::livresEmpruntes');
     $routes->get('livresEnAttente','UtilisateurController::showPendingBooks');
+    $routes->post('emprunter', 'UtilisateurController::emprunterLivre');
+
 });
 
 

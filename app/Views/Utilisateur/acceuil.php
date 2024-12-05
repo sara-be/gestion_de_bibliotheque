@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
@@ -19,8 +19,8 @@
 </head>
 
 <body>
-   
-<header class="header">
+
+    <header class="header">
         <div class="header-1">
             <a href="/utilisateur/acceuil" class="logo"><i class="fas fa-book"></i>bookly</a>
             <div class="search-bar-container">
@@ -47,11 +47,12 @@
 
             </nav>
         </div>
-</header>
-        
-        <h1 class="text-center mb-4 p-3 text-success " style="color: black; font-family: 'Poppins', sans-serif; font-size: 2.5rem;">
-            Livres Disponibles
-        </h1>
+    </header>
+
+    <h1 class="text-center mb-4 p-3 text-success "
+        style="color: black; font-family: 'Poppins', sans-serif; font-size: 2.5rem;">
+        Livres Disponibles
+    </h1>
     <div class="container mt-4">
         <?php if (!empty($livresDisponibles)): ?>
             <div class="row">
@@ -75,10 +76,12 @@
                                     <strong style="display: inline;">Description :</strong>
                                     <?= esc(substr($livre['description'], 0, 100)) . '...' ?>
                                 </p>
-                                <p class="text-muted"><strong>Copies restantes :</strong> <?= esc($livre['remaining_copies']) ?></p>
-                                <button class="btn btn-success btn-emprunter" data-livre-id="<?= esc($livre['id']) ?>">
-                                    Emprunter
-                                </button>
+                                <p class="text-muted"><strong>Copies restantes :</strong> <?= esc($livre['remaining_copies']) ?>
+                                </p>
+                                <form action="/utilisateur/emprunter" method="post" style="display:inline;">
+                                    <input type="hidden" name="livre_id" value="<?= esc($livre['id']) ?>">
+                                    <button type="submit" class="btn btn-success btn-emprunter">Emprunter</button>
+                                </form>
                             </div>
                         </div>
                     </div>
