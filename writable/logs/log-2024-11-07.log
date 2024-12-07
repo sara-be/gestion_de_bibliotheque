@@ -1,0 +1,102 @@
+CRITICAL - 2024-11-07 20:41:37 --> Error: Call to a member function routes() on null
+[Method: CLI, Route: serve]
+in APPPATH\Config\Routes.php on line 31.
+ 1 SYSTEMPATH\Router\RouteCollection.php(340): require()
+ 2 SYSTEMPATH\CLI\Console.php(41): CodeIgniter\Router\RouteCollection->loadRoutes()
+ 3 SYSTEMPATH\Boot.php(351): CodeIgniter\CLI\Console->run()
+ 4 SYSTEMPATH\Boot.php(104): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+ 5 ROOTPATH\spark(84): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+CRITICAL - 2024-11-07 20:46:41 --> Error: Call to a member function routes() on null
+[Method: CLI, Route: serve]
+in APPPATH\Config\Routes.php on line 31.
+ 1 SYSTEMPATH\Router\RouteCollection.php(340): require()
+ 2 SYSTEMPATH\CLI\Console.php(41): CodeIgniter\Router\RouteCollection->loadRoutes()
+ 3 SYSTEMPATH\Boot.php(351): CodeIgniter\CLI\Console->run()
+ 4 SYSTEMPATH\Boot.php(104): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+ 5 ROOTPATH\spark(84): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+CRITICAL - 2024-11-07 21:05:45 --> Error: Call to undefined function form_open()
+[Method: GET, Route: user/login]
+in APPPATH\Views\frontend\pages\auth\login.php on line 19.
+ 1 SYSTEMPATH\View\View.php(234): include()
+ 2 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('frontend/pages/auth/login', [], true)
+ 4 APPPATH\Controllers\UserController.php(19): view('frontend/pages/auth/login', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->loginForm()
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\User\\Desktop\\fin\\finito\\public\\index.php')
+CRITICAL - 2024-11-07 21:05:53 --> Error: Call to undefined function form_open()
+[Method: GET, Route: user/login]
+in APPPATH\Views\frontend\pages\auth\login.php on line 19.
+ 1 SYSTEMPATH\View\View.php(234): include()
+ 2 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('frontend/pages/auth/login', [], true)
+ 4 APPPATH\Controllers\UserController.php(19): view('frontend/pages/auth/login', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->loginForm()
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\User\\Desktop\\fin\\finito\\public\\index.php')
+CRITICAL - 2024-11-07 21:07:30 --> Error: Call to undefined function form_open()
+[Method: GET, Route: user/login]
+in APPPATH\Views\frontend\pages\auth\login.php on line 19.
+ 1 SYSTEMPATH\View\View.php(234): include()
+ 2 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('frontend/pages/auth/login', [], true)
+ 4 APPPATH\Controllers\UserController.php(19): view('frontend/pages/auth/login', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->loginForm()
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\User\\Desktop\\fin\\finito\\public\\index.php')
+CRITICAL - 2024-11-07 21:07:35 --> Error: Call to undefined function form_open()
+[Method: GET, Route: user/login]
+in APPPATH\Views\frontend\pages\auth\login.php on line 19.
+ 1 SYSTEMPATH\View\View.php(234): include()
+ 2 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('frontend/pages/auth/login', [], true)
+ 4 APPPATH\Controllers\UserController.php(19): view('frontend/pages/auth/login', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->loginForm()
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\User\\Desktop\\fin\\finito\\public\\index.php')
+CRITICAL - 2024-11-07 21:07:52 --> Error: Call to undefined function form_open()
+[Method: GET, Route: user/login]
+in APPPATH\Views\frontend\pages\auth\login.php on line 19.
+ 1 SYSTEMPATH\View\View.php(234): include()
+ 2 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('frontend/pages/auth/login', [], true)
+ 4 APPPATH\Controllers\UserController.php(19): view('frontend/pages/auth/login', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\UserController->loginForm()
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+11 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\User\\Desktop\\fin\\finito\\public\\index.php')
+CRITICAL - 2024-11-07 21:26:37 --> CodeIgniter\Router\Exceptions\RouterException: The route for "login" cannot be found.
+[Method: GET, Route: /]
+in SYSTEMPATH\Helpers\url_helper.php on line 494.
+ 1 SYSTEMPATH\Helpers\url_helper.php(494): CodeIgniter\Router\Exceptions\RouterException::forInvalidRoute('login')
+ 2 APPPATH\Views\welcome_message.php(61): url_to('login')
+ 3 SYSTEMPATH\View\View.php(234): include('C:\\Users\\User\\Desktop\\fin\\finito\\app\\Views\\welcome_message.php')
+ 4 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1171): CodeIgniter\View\View->render('welcome_message', [], true)
+ 6 APPPATH\Controllers\Home.php(9): view('welcome_message')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->index()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(56): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+13 SYSTEMPATH\rewrite.php(44): require_once('C:\\Users\\User\\Desktop\\fin\\finito\\public\\index.php')
