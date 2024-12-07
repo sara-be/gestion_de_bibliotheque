@@ -77,21 +77,21 @@
     <div id="close-login-btn" class="fas fa-times"></div>
     <form action="<?= site_url('authenticate') ?>" method="post">
 
-        <h3>sign in</h3>
+        <h3>Connexion</h3>
         <span>Email</span>
         <!-- Ajout de name="email" -->
-        <input type="email" name="email" class="box" placeholder="enter your email" id="floatingEmailInput" inputmode="email" autocomplete="email" required>
+        <input type="email" name="email" class="box" placeholder="entrer votre email" id="floatingEmailInput" inputmode="email" autocomplete="email" required>
        
 
-        <span>password</span>
-        <input type="password" class="box" id="floatingPasswordInput" name="password" inputmode="text" placeholder="enter your password" required>
+        <span>Mot de passe</span>
+        <input type="password" class="box" id="floatingPasswordInput" name="password" inputmode="text" placeholder="entrer votre mot de passe" required>
       
 
 
         <button type="submit" class="btn">S'authentifier</button>
 
-        <p>forgot password? <a href="#" id="forgot-password-link">click here</a></p>
-        <p>don't have an account? <a href="#" id="show-register">create one</a></p>
+   
+        <p>Vous avez déja un compte? <a href="#" id="show-register">crée un compte</a></p>
     </form>
 </div>
 
@@ -99,28 +99,28 @@
 <div class="register-form-container" id="register-form">
     <div id="close-register-btn" class="fas fa-times"></div>
     <form action="<?= site_url('register') ?>" method="post">
-        <h3>sign up</h3>
+        <h3>S'inscrire</h3>
 
-        <span>name</span>
-        <input type="text" class="box" placeholder="enter your username" id="floatingNameInput" name="nname" inputmode="text" autocomplete="nname" required>
+        <span>Nom</span>
+        <input type="text" class="box" placeholder="entrer votre nom" id="floatingNameInput" name="nname" inputmode="text" autocomplete="nname" required>
      
-        <span>username</span>
-        <input type="text" class="box" placeholder="enter your username" id="floatingUsernameInput" name="username" inputmode="text" autocomplete="username" required>
+        <span>Prénom</span>
+        <input type="text" class="box" placeholder="entrer votre prénom" id="floatingUsernameInput" name="username" inputmode="text" autocomplete="username" required>
      
         <span>email</span>
-        <input type="email" class="box" placeholder="enter your email" id="floatingEmailInput" name="email" inputmode="email" autocomplete="email" required>
+        <input type="email" class="box" placeholder="entrer votre email" id="floatingEmailInput" name="email" inputmode="email" autocomplete="email" required>
        
        
         <span>password</span>
-        <input type="password" class="box" placeholder="enter your password" id="floatingPasswordInput" name="password" inputmode="text" autocomplete="new-password" required>
+        <input type="password" class="box" placeholder="entrer votre mot de passe" id="floatingPasswordInput" name="password" inputmode="text" autocomplete="new-password" required>
        
 
-        <span>confirm password</span>
-        <input type="password" class="box" placeholder="confirm password" id="floatingPasswordConfirmInput" name="password_confirm" inputmode="text" autocomplete="new-password" required>
+        <span>confirmer password</span>
+        <input type="password" class="box" placeholder="confirmer votre mot de passe" id="floatingPasswordConfirmInput" name="password_confirm" inputmode="text" autocomplete="new-password" required>
        
 
         <input type="submit" value="sign up" class="btn">
-        <p>already have an account? <a href="#" id="show-login">sign in</a></p>
+        <p>Vous avez déja un compte? <a href="#" id="show-login">se connecter</a></p>
     </form>
 </div>
 
@@ -158,11 +158,9 @@
 <section class="home" id="home">
 <div class="row">
    <div class="content">
-    <h3>A book can change your life</h3>
-    <p>A book has the power to change your life, 
-        gently opening your mind to new ideas and guiding 
-        you toward fresh perspectives..</p>
-          <a href="#" class="btn">borrow now</a>
+    <h3>Un livre peut changer votre vie</h3>
+   <p>Un livre a le pouvoir de transformer votre vie en ouvrant doucement votre esprit à de nouvelles idées et perspectives.</p>
+          <a href="#" class="btn">Emprunter maintanant</a>
    </div>
    
    <div class="swiper books-slider">
@@ -188,16 +186,16 @@
     <div class="icons">
         <i class="fas fa-plane"></i>
         <div class="content">
-            <h3>Fast Borrowing</h3>
-            <p>Borrow books in under 10 minutes!</p>
+            <h3>Emprunt rapide</h3>
+            <p>Empruntez des livres en moins de 10 minutes!</p>
         </div>
     </div>
 
         <div class="icons">
             <i class="fas fa-lock"></i>
             <div class="content">
-                <h3>Free for Members</h3>
-                <p>Borrow over $100 worth of books for free!</p>
+                <h3>Gratuit pour les membres</h3>
+                <p>Empruntez plus de 100 $ de livres gratuitement!</p>
             </div>
         </div>
 
@@ -205,8 +203,8 @@
         <div class="icons">
             <i class="fas fa-redo-alt"></i>
             <div class="content">
-                <h3>secure returns</h3>
-                <p>Return your books within 10 days, no questions asked.</p>
+                <h3>Retours sécurisés</h3>
+                <p>Retournez vos livres dans les 10 jours sans questions.</p>
             </div>
         </div>
 
@@ -214,8 +212,8 @@
         <div class="icons">
             <i class="fas fa-headset"></i>
             <div class="content">
-                <h3>24/7 support</h3>
-                <p>Call us anytime for assistance with your borrowings!</p>
+                <h3>Assistance 24/7</h3>
+                <p>Appelez-nous à tout moment pour obtenir de l'aide</p>
             </div>
         </div>
        

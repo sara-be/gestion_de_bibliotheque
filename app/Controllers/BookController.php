@@ -14,7 +14,7 @@ class BookController extends BaseController
     $bookModel = new BookModel();
     
     // Nombre de livres par page
-    $perPage = 4;
+    $perPage = 3;
 
     // Récupérer les livres avec la pagination
     $books = $bookModel->paginate($perPage);

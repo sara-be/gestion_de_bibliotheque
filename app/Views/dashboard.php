@@ -30,7 +30,7 @@
         /* Pour les images */
         .book-photo {
             width: 100%; /* L'image prend toute la largeur de la carte */
-            height: auto; /* L'image garde ses proportions */
+            height: 200PX; /* L'image garde ses proportions */
             object-fit: cover; /* L'image se découpe pour remplir la zone sans déformer */
             border-radius: 8px; /* Coins arrondis de l'image */
         }
@@ -73,6 +73,10 @@
     color: #333; /* Couleur du texte */
     margin-bottom: 20px; /* Espacement sous le titre */
 }
+        .book-container{
+            display: flex;
+            flex-direction: row;
+        }
 
     </style>
 </head>
@@ -116,12 +120,12 @@
                 <?php if (!empty($books)): ?>
                     <?php foreach ($books as $book): ?>
                         <div class="book-card">
-                            <img src="/uploads/<?= esc($book['photo']) ?>" alt="<?= esc($book['title']) ?>" class="book-photo" width="200" height="auto">
-                            <h4 class="book-title"><?= esc($book['title']) ?></h4>
-                            <p class="book-author"><?= esc($book['author']) ?></p>
-                            <a href="<?= site_url('book/details/' . $book['id']) ?>" class="btn">Voir les détails</a>
+                        <img src="/uploads/<?= esc($book['photo']) ?>" alt="<?= esc($book['title']) ?>" class="book-photo" width="200" height="auto">
+                        <h4 class="book-title"><?= esc($book['title']) ?></h4>
+                         <p class="book-author"><?= esc($book['author']) ?></p>
+                        <a href="<?= site_url('book/details/' . $book['id']) ?>" class="btn">Voir les détails</a>
+                         </div>
 
-                        </div>
                     <?php endforeach; ?>
                 <?php else: ?>
                     <p>Aucun livre disponible.</p>
@@ -172,11 +176,34 @@
             <a href="" class="fab fa-linkedin"></a>
             <a href="" class="fab fa-pinterest"></a>
         </div>
-        <div class="credit">created by <span>mr. web designer</span> | all rights reserved!</div>
+        <div class="credit">created by <span>Bookly</span> | all rights reserved!</div>
     </section>
     <!-- footer section ends -->
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+    // Récupérer le champ de recherche et les cartes des livres
+    const searchBox = document.getElementById('search-box');
+    const bookCards = document.querySelectorAll('.book-card');
+
+    // Écouter les changements dans le champ de recherche
+    searchBox.addEventListener('input', function () {
+        const query = searchBox.value.toLowerCase();
+
+        bookCards.forEach(card => {
+            const title = card.querySelector('.book-title').textContent.toLowerCase();
+            const author = card.querySelector('.book-author').textContent.toLowerCase();
+
+            // Vérifier si le titre ou l'auteur correspond à la recherche
+            if (title.includes(query) || author.includes(query)) {
+                card.style.display = ''; // Afficher la carte
+            } else {
+                card.style.display = 'none'; // Masquer la carte
+            }
+        });
+    });
+</script>
+
     <script src="/js/dashboard.js"></script>
 </body>
 </html>
